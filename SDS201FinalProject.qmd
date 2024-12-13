@@ -1,0 +1,142 @@
+---
+title: "SDS201FinalProject"
+author: "Delia Parco and Paola Goldsand-Lamboy"
+format:
+  html:
+    embed-resources: true
+editor: source
+knitr:
+  opts_chunk:
+    message: false
+##bibliography: refs.bib
+---
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+
+library(tidyverse)
+library(googlesheets4)
+library(janitor)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(infer)
+```
+
+```{r}
+movies <- read_sheet("https://docs.google.com/spreadsheets/d/18yWWmyEMNVSnbGaaGfrjXcYIoFhedToTQYdiEAgdQh4/edit?usp=sharing") |>
+  mutate(budget_2013 = readr::parse_number(budget_2013))
+```
+
+## Introduction
+
+
+
+## Exploratory Data Analysis 
+
+```{r}
+#| label: "Table 1"
+#| fig-cap: "**Table 1.** Summary of the number of movies in the data set *passes* or *fails* the Betchdel Test, as well as the means and standard deviations of these groups"
+movie_summary <- movies |>
+  group_by(binary) |>
+  summarize(avg_budget_2013 = mean(budget_2013),
+            var_budget_2013 = var(budget_2013),
+            n_movies = n()
+            )
+          
+kable(movie_summary)
+```
+
+
+```{r}
+#| label: "Figure 1"
+#| fig-cap: "**Figure 1.** Distribution of budgets across movies, broken down weather they pass or fail the Betchdel Test."
+ggplot(
+  data = movies,
+  mapping = aes(
+    x = binary,
+    y = budget_2013,
+    fill = binary
+  )
+) + 
+  geom_boxplot()
+```
+
+## Modeling Analysis
+
+```{r}
+library(infer)
+
+t_stat <- movies |>
+  specify(formula = budget_2013 ~ binary) |>
+  hypothesise(null = "point", mu = 0) |>
+  calculate(stat = "t", order = c("FAIL", "PASS"))
+
+t_stat
+```
+ 
+```{r}
+t_dist <- movies |>
+  specify(formula = budget_2013 ~ binary) |>
+  assume(distribution = "t")
+
+t_dist
+```
+ 
+```{r}
+visualise(t_dist)
+```
+
+
+
+```{r}
+t_dist |>
+  get_p_value(obs_stat = t_stat, direction = "greater")
+```
+
+The mean budget for movies that pass the Betchdel test in our sample (mean = 46274167) was less than that of movies that fail the Betchdel test (mean = 62911555.) I reject the Null Hypothesis that the average budget is equal between these groups and conclude that movies that pass the Betchdel test have lower budgets than movies that fail the Betchdel test on average(t(1791), p < .05). 
+
+## Results
+
+
+
+## Discussion/Conclusion
+
+
+
+## Appendix: Regression Diagnostics 
+
+
+```{r}
+#| label: "Figure X"
+#| fig-cap: "**Figure X.** Visualization exploring the Normality assumption of the linear model."
+set.seed(112)
+
+pass_bootstrap <- movies |>
+  filter(binary == "PASS") |>
+  specify(response = budget_2013) |>
+  generate(reps=1000, type="bootstrap") |>
+  calculate(stat = "mean")
+
+fail_bootstrap <- movies |>
+  filter(binary == "FAIL") |>
+  specify(response = budget_2013) |>
+  generate(reps=1000, type="bootstrap") |>
+  calculate(stat = "mean")
+
+library(gridExtra)
+grid.arrange(visualise(fail_bootstrap),
+             visualise(pass_bootstrap),
+             ncol = 2
+             )
+```
+
+The bootstrapped sampling distributions of the average budgets for movies that fail the Betchdel test and movies that pass the Betchdel test are shown in Figure x suggests the assumption of Normally distributed residuals is also reasonable for our t-distribution. Additionally, the boxplots in Figure 1 shows no strong indication that the equal variance assumption is violated. Both boxplots have approximately the same range, and approximately the same Inter-quartile range. Furthermore, the sample variances of each group are similar to each other.
+
+
+
+## Bibliography
+
+
