@@ -32,6 +32,9 @@ movies <- read_sheet("https://docs.google.com/spreadsheets/d/18yWWmyEMNVSnbGaaGf
 
 ## Introduction
 
+What is the Bechdel Test and why is it important, you might ask. The Bechdel Test, named after the cartoonist, Alison Bechdel, is a way to measure representation of women in films (1). In order to pass the test, a movie must fit the criteria as follows: the movie must have 2 women that are having a conversation, and the conversation shouldn’t be about a man.
+The question we chose to investigate if movies with larger budgets are more likely to pass the Bechdel Test. Our research explores this question by investigating the relationship between a movie's budget and likelihood of passing this Test. We are specifically interested in this topic because it touches on the intersection of economics and social progress.
+To address this, we did an in depth analysis of the data set (insert citation here), using multiple variables and visualizations. Do higher budgets, which allow for expansive storytelling and diverse casts, translate to better gender representation? Or do smaller, independent films, often less constrained by commercial pressures, seem more inclusive? Let’s see.
 
 
 ## Exploratory Data Analysis 
@@ -104,7 +107,9 @@ The mean budget for movies that pass the Betchdel test in our sample (mean = 462
 
 ## Discussion/Conclusion
 
+The p-value found confirms that ___. 	
 
+While our analysis provides us with interesting insights as to whether there is a correlation between movie budgets and the Bechdel Test, there is always room for improvement and various factors that could limit the data. These factors could include the scope of the data and even confounding variables such as who actually directs a movie or cultural significance. Even the fact that a movie does or doesn’t pass the test doesn’t wholly guarantee it to be inclusive or fully representative. Suffice it to say that a deeper analysis of the “behind the scenes” could also provide valuable insight here.
 
 ## Appendix: Regression Diagnostics 
 
@@ -134,8 +139,6 @@ grid.arrange(visualise(fail_bootstrap),
 ```
 
 The bootstrapped sampling distributions of the average budgets for movies that fail the Betchdel test and movies that pass the Betchdel test are shown in Figure x suggests the assumption of Normally distributed residuals is also reasonable for our t-distribution. Additionally, the boxplots in Figure 1 shows no strong indication that the equal variance assumption is violated. Both boxplots have approximately the same range, and approximately the same Inter-quartile range. Furthermore, the sample variances of each group are similar to each other.
-
-
 
 ## Bibliography
 
