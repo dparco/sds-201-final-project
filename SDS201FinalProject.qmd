@@ -99,15 +99,12 @@ t_dist |>
   get_p_value(obs_stat = t_stat, direction = "greater")
 ```
 
-The mean budget for movies that pass the Betchdel test in our sample (mean = 46274167) was less than that of movies that fail the Betchdel test (mean = 62911555.) I reject the Null Hypothesis that the average budget is equal between these groups and conclude that movies that pass the Betchdel test have lower budgets than movies that fail the Betchdel test on average(t(1791), p < .05). 
-
 ## Results
 
+The mean budget for movies that pass the Betchdel test in our sample (mean = 46274167) was less than that of movies that fail the Betchdel test (mean = 62911555.) I reject the Null Hypothesis that the average budget is equal between these groups and conclude that movies that pass the Betchdel test have lower budgets than movies that fail the Betchdel test on average(t(1791), p < .05). 
 
 
 ## Discussion/Conclusion
-
-The p-value found confirms that ___. 	
 
 While our analysis provides us with interesting insights as to whether there is a correlation between movie budgets and the Bechdel Test, there is always room for improvement and various factors that could limit the data. These factors could include the scope of the data and even confounding variables such as who actually directs a movie or cultural significance. Even the fact that a movie does or doesn’t pass the test doesn’t wholly guarantee it to be inclusive or fully representative. Suffice it to say that a deeper analysis of the “behind the scenes” could also provide valuable insight here.
 
