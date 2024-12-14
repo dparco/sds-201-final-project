@@ -32,7 +32,7 @@ movies <- read_sheet("https://docs.google.com/spreadsheets/d/18yWWmyEMNVSnbGaaGf
 
 ## Introduction
 
-What is the Bechdel Test and why is it important, you might ask. The Bechdel Test, named after the cartoonist, Alison Bechdel, is a way to measure representation of women in films @articlecitekey. In order to pass the test, a movie must fit the criteria as follows: the movie must have 2 women that are having a conversation, and the conversation shouldn’t be about a man. The question we chose to investigate if movies with larger budgets are more likely to pass the Bechdel Test. Our research explores this question by investigating the relationship between a movie's budget and likelihood of passing this Test. We are specifically interested in this topic because it touches on the intersection of economics and social progress. To address this, we did an in depth analysis of the data set @betchdelwebsite @numberswebsite, using multiple variables and visualizations. Do higher budgets, which allow for expansive storytelling and diverse casts, translate to better gender representation? Or do smaller, independent films, often less constrained by commercial pressures, seem more inclusive? Let’s see.
+What is the Bechdel Test and why is it important, you might ask. The Bechdel Test, named after the cartoonist, Alison Bechdel, is a way to measure representation of women in films @articlecitekey. In order to pass the test, a movie must fit the criteria as follows: the movie must have 2 women that are having a conversation, and the conversation shouldn’t be about a man. The question we chose to investigate if movies with larger budgets are more likely to pass the Bechdel Test. Our research explores this question by investigating the relationship between a movie's budget and likelihood of passing this Test. We are specifically interested in this topic because it touches on the intersection of economics and social progress. To address this, we did an in depth analysis of the data set @bechdelwebsite @numberswebsite, using multiple variables and visualizations. Do higher budgets, which allow for expansive storytelling and diverse casts, translate to better gender representation? Or do smaller, independent films, often less constrained by commercial pressures, seem more inclusive? Let’s see.
 
 
 ## Exploratory Data Analysis 
@@ -41,7 +41,7 @@ The data we analyzed included results from a series of movies, 1,615 total.
 
 ```{r}
 #| label: "Table 1"
-#| fig-cap: "**Table 1.** Summary of the number of movies in the data set *passes* or *fails* the Betchdel Test, as well as the means and standard deviations of these groups"
+#| fig-cap: "**Table 1.** Summary of the number of movies in the data set *passes* or *fails* the Bechdel Test, as well as the means and standard deviations of these groups"
 movie_summary <- movies |>
   group_by(binary) |>
   summarize(avg_budget_2013 = mean(budget_2013),
@@ -55,7 +55,7 @@ kable(movie_summary)
 
 ```{r}
 #| label: "Figure 1"
-#| fig-cap: "**Figure 1.** Distribution of budgets across movies, broken down weather they pass or fail the Betchdel Test."
+#| fig-cap: "**Figure 1.** Distribution of budgets across movies, broken down weather they pass or fail the Bechdel Test."
 ggplot(
   data = movies,
   mapping = aes(
@@ -98,7 +98,7 @@ visualise(t_dist)
 t_dist |>
   get_p_value(obs_stat = t_stat, direction = "greater")
 ```
-The mean budget for movies that pass the Betchdel test in our sample (mean = 46274167) was less than that of movies that fail the Betchdel test (mean = 62911555.) I reject the Null Hypothesis that the average budget is equal between these groups and conclude that movies that pass the Betchdel test have lower budgets than movies that fail the Betchdel test on average(t(1791), p < .05). 
+The mean budget for movies that pass the Bechdel test in our sample (mean = 46274167) was less than that of movies that fail the Betchdel test (mean = 62911555.) I reject the Null Hypothesis that the average budget is equal between these groups and conclude that movies that pass the Betchdel test have lower budgets than movies that fail the Bechdel test on average(t(1791), p < .05). 
 
 ## Discussion
 ### Conclusion
@@ -135,7 +135,7 @@ grid.arrange(visualise(fail_bootstrap),
              )
 ```
 
-The bootstrapped sampling distributions of the average budgets for movies that fail the Betchdel test and movies that pass the Betchdel test are shown in Figure x suggests the assumption of Normally distributed residuals is also reasonable for our t-distribution. Additionally, the boxplots in Figure 1 shows no strong indication that the equal variance assumption is violated. Both boxplots have approximately the same range, and approximately the same Inter-quartile range. Furthermore, the sample variances of each group are similar to each other.
+The bootstrapped sampling distributions of the average budgets for movies that fail the Betchdel test and movies that pass the Bechdel test are shown in Figure x suggests the assumption of Normally distributed residuals is also reasonable for our t-distribution. Additionally, the boxplots in Figure 1 shows no strong indication that the equal variance assumption is violated. Both boxplots have approximately the same range, and approximately the same Inter-quartile range. Furthermore, the sample variances of each group are similar to each other.
 
 ## Bibliography
 
