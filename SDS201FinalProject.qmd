@@ -37,6 +37,8 @@ What is the Bechdel Test and why is it important, you might ask. The Bechdel Tes
 
 ## Exploratory Data Analysis 
 
+The data we analyzed included results from a series of movies, 1,615 total. 
+
 ```{r}
 #| label: "Table 1"
 #| fig-cap: "**Table 1.** Summary of the number of movies in the data set *passes* or *fails* the Betchdel Test, as well as the means and standard deviations of these groups"
@@ -105,7 +107,6 @@ The mean budget for movies that pass the Betchdel test in our sample (mean = 462
 While our analysis provides us with interesting insights as to whether there is a correlation between movie budgets and the Bechdel Test, there is always room for improvement and various factors that could limit the data. These factors could include the scope of the data and even confounding variables such as who actually directs a movie or cultural significance. Even the fact that a movie does or doesn’t pass the test doesn’t wholly guarantee it to be inclusive or fully representative. Suffice it to say that a deeper analysis of the “behind the scenes” could also provide valuable insight here.
 
 ### Further Questions
-
 
 ## Appendix: Regression Diagnostics 
 
